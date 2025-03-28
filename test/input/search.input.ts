@@ -1,0 +1,1 @@
+export const productSearch = "Hikvision DS-2CE76D0T-ITPF 2 MP Indoor Fixed Turret Camera"
