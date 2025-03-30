@@ -1,6 +1,7 @@
+import Page from "../page";
 import homeObjects from "./home.objects";
 
-class homepage {
+class homepage extends Page {
 
     public async clickOnHomeButton() {
         await homeObjects.homepagelogo.click();
@@ -8,6 +9,10 @@ class homepage {
     public async searchProduct(searchText: string) {
         await homeObjects.searchInput.setValue(searchText);
         await browser.keys("Enter");
+    }
+
+    public open () {
+        return super.open('');
     }
 
 }
