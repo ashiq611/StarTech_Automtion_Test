@@ -237,8 +237,18 @@ export const config: WebdriverIO.Config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: async function (test, context, { error }) {
+        if (error) {
+            const screenshot = await browser.takeScreenshot();
+            await browser.call(() =>
+                require('@wdio/allure-reporter').addAttachment(
+                    'Screenshot',
+                    Buffer.from(screenshot, 'base64'),
+                    'image/png'
+                )
+            );
+        }
+    },
 
 
     /**
@@ -281,8 +291,23 @@ export const config: WebdriverIO.Config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: async () => {
+        const { execSync, spawn } = require('child_process');
+        try {
+            // Generate report synchronously
+            execSync('allure generate allure-results --clean -o allure-report');
+            console.log('Allure report generated successfully at ./allure-report');
+
+            // Open report asynchronously (non-blocking)
+            spawn('allure', ['open', 'allure-report'], {
+                detached: true, // Run in background
+                stdio: 'ignore', // Don’t block terminal
+            }).unref(); // Detach from parent process
+            console.log('Allure report server started (check your browser)');
+        } catch (error) {
+            console.error('Failed to generate or open Allure report:', error);
+        }
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session

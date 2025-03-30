@@ -13,6 +13,10 @@ class productDetailsObjects {
     public get cart() {
         return $("#cart");
     }
+
+    public get allDeleteButtons():Promise<WebdriverIO.ElementArray> {
+        return $$('.remove');;
+    }
 }
 
 export default new productDetailsObjects();

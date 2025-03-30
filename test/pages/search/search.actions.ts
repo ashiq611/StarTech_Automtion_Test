@@ -1,11 +1,18 @@
-import { productSearch } from "../../input/search.input";
+
 import searchObjects from "./search.objects";
 
 class searchPage {
     public async searchHeadline() {
        const headingText =  await searchObjects.searchPageHeading;
        const getText = await headingText.getText();
-       expect(getText).toEqual("Search - " + productSearch);
+       return getText
+    //    expect(getText).toEqual("Search - " + productSearch);
+    }
+    public async noProductsMessage() {
+        const messageElement = await searchObjects.noProductsMessage;
+        await messageElement.waitForDisplayed({ timeout: 5000 });
+        return messageElement.getText();
+        
     }
     public async gotoProductDetails() {
         const imageElement = await searchObjects.productDetails;
@@ -14,6 +21,7 @@ class searchPage {
 
         // Click the image
         await imageElement.click();
+        console.log("click on image")
     }
 
     public async clickonBuyNow() {

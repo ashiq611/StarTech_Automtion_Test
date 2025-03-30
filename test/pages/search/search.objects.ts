@@ -9,6 +9,10 @@ class searchObjects {
         return $("//div[@class='product-item']//a[@class='product-title']");
     }
 
+    public get noProductsMessage(){
+        return $('#content p'); // Targets the <p> inside #content
+    }
+
     public get productDetails() {
         return $('//div[@class="p-item"][1]//div[@class="p-item-img"]/a/img');
     }
