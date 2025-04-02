@@ -127,8 +127,8 @@ JSON
   },
   // ... other configurations
 }
-Contributing
+## Contributing
 Feel free to contribute to this project by submitting pull requests or reporting issues.
 
-License
+## License
 This project is licensed under the MIT License. 1    
