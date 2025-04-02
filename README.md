@@ -126,7 +126,8 @@ JSON
     "wdio": "wdio run wdio.conf.js && allure generate allure-results --clean && allure open"
   },
   // ... other configurations
-}
+}```
+
 ## Contributing
 Feel free to contribute to this project by submitting pull requests or reporting issues.
 
