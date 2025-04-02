@@ -114,7 +114,7 @@ exports.config = {
     useCucumberStepReporter: false,
   }]],
   // ... other configurations
-}
+}```
 And your package.json file includes the wdio script:
 
 
