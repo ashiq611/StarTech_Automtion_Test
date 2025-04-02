@@ -122,4 +122,4 @@ And your package.json file includes the wdio script:
 Feel free to contribute to this project by submitting pull requests or reporting issues.
 
 ## License
-This project is licensed under the MIT License. 1    
+This project is licensed under the MIT License. 
