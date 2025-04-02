@@ -99,23 +99,6 @@ The test suite covers the following scenarios:
 -   `@wdio/allure-reporter`: WebdriverIO Allure reporter.
 -   `allure-commandline`: Allure command-line tool.
 
-## Configuring Allure Report
-
-Ensure that your `wdio.conf.js` file includes the Allure reporter:
-
-```javascript
-// wdio.conf.js
-exports.config = {
-  // ... other configurations
-  reporters: ['spec', ['allure', {
-    outputDir: 'allure-results',
-    disableWebdriverStepsReporting: true,
-    disableWebdriverScreenshotsReporting: false,
-    useCucumberStepReporter: false,
-  }]],
-  // ... other configurations
-}```
-And your package.json file includes the wdio script:
 
 
 ## Contributing
