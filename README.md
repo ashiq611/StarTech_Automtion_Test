@@ -1,6 +1,6 @@
 # StarTech.com.bd Website Test Suite
 
-This test suite uses WebdriverIO to automate and verify the functionality of the StarTech.com.bd website.
+This test suite uses WebdriverIO to automate and verify the functionality of the StarTech.com.bd website. It also integrates Allure Report for enhanced test reporting.
 
 ## Prerequisites
 
@@ -9,6 +9,7 @@ Before running the tests, ensure you have the following installed:
 -   Node.js (LTS recommended)
 -   npm or yarn
 -   WebdriverIO CLI (`npm install -g @wdio/cli`)
+-   Allure CLI (`npm install -g allure-commandline`)
 
 ## Setup
 
@@ -31,15 +32,19 @@ Before running the tests, ensure you have the following installed:
     ```
     ```
 
-## Running the Tests
+## Running the Tests and Generating Allure Report (Using `npm run wdio`)
 
-To execute the test suite, use the following command:
+This project is configured to run the WebdriverIO tests and generate the Allure report automatically using the `npm run wdio` command.
 
-```markdown
-```bash
-npx wdio run wdio.conf.js
-# or if you are using yarn
-yarn wdio run wdio.conf.js
+1.  **Run the tests and generate the report:**
+
+    ```markdown
+    ```bash
+    npm run wdio
+    ```
+    ```
+
+    This command will execute the tests, and the Allure results will be stored in the `allure-results` directory. After the tests finish, it will automatically generate the HTML report from the `allure-results` directory and open it in your default web browser.
 
 ## Test Cases
 
@@ -80,6 +85,8 @@ The test suite covers the following scenarios:
 -   `specs/`: Contains test specification files.
 -   `utils/`: Contains utility functions.
 -   `wdio.conf.js`: WebdriverIO configuration file.
+-   `allure-results/`: Contains the generated Allure report data.
+-   `allure-report/`: Contains the generated HTML Allure report.
 
 ## Dependencies
 
@@ -89,11 +96,39 @@ The test suite covers the following scenarios:
 -   `@wdio/spec-reporter`: WebdriverIO spec reporter.
 -   `@wdio/globals`: WebdriverIO globals.
 -   `chromedriver`: Chrome driver.
+-   `@wdio/allure-reporter`: WebdriverIO Allure reporter.
+-   `allure-commandline`: Allure command-line tool.
 
-## Contributing
+## Configuring Allure Report
 
+Ensure that your `wdio.conf.js` file includes the Allure reporter:
+
+```javascript
+// wdio.conf.js
+exports.config = {
+  // ... other configurations
+  reporters: ['spec', ['allure', {
+    outputDir: 'allure-results',
+    disableWebdriverStepsReporting: true,
+    disableWebdriverScreenshotsReporting: false,
+    useCucumberStepReporter: false,
+  }]],
+  // ... other configurations
+}
+And your package.json file includes the wdio script:
+
+JSON
+
+// package.json
+{
+  // ... other configurations
+  "scripts": {
+    "wdio": "wdio run wdio.conf.js && allure generate allure-results --clean && allure open"
+  },
+  // ... other configurations
+}
+Contributing
 Feel free to contribute to this project by submitting pull requests or reporting issues.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+License
+This project is licensed under the MIT License. 1    
