@@ -117,16 +117,6 @@ exports.config = {
 }
 And your package.json file includes the wdio script:
 
-JSON
-
-// package.json
-{
-  // ... other configurations
-  "scripts": {
-    "wdio": "wdio run wdio.conf.js && allure generate allure-results --clean && allure open"
-  },
-  // ... other configurations
-}```
 
 ## Contributing
 Feel free to contribute to this project by submitting pull requests or reporting issues.
