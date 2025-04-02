@@ -10,7 +10,7 @@ class LoginPage extends Page {
         await loginObjects.btnSubmit.click();
     }
     public open () {
-        return super.open('login');
+        return super.open('/account/login');
     }
 }
 

@@ -13,6 +13,7 @@ class productDetailsPage {
          await quantityInput.click();
          await browser.keys(quantity.toString());
          await browser.pause(2000);
+         return quantity
     }
 
         public async viewCartButton() {

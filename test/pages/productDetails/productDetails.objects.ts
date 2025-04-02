@@ -14,8 +14,8 @@ class productDetailsObjects {
         return $("#cart");
     }
 
-    public get allDeleteButtons():Promise<WebdriverIO.ElementArray> {
-        return $$('.remove');;
+    public get allDeleteButtons(): ChainablePromiseArray {
+        return $$('.remove');
     }
 }
 
